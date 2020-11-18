@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Entities;
+using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace web_api.Controllers
@@ -11,10 +8,27 @@ namespace web_api.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Login()
+        public readonly ILoginRepository repo;
+
+        public LoginController(ILoginRepository _repo)
         {
-            return Ok("Hello");
+            repo = _repo;
+        }
+
+        [HttpGet]
+        public IActionResult Login(string user, string senha)
+        {
+            var login = repo.Get(user, senha);
+            if (login != null)
+                return Ok(login);
+            else
+                return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult Set(Login login)
+        {
+            return Ok(repo.Set(login));
         }
     }
 }

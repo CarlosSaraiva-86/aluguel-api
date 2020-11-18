@@ -16,13 +16,16 @@ namespace Infrastructure.Repository
 
         public Login Get(string user, string password)
         {
-            return dbSet.Where(x => x.user == user && x.password == password).SingleOrDefault();
+            return dbSet
+                .Where(x => x.user == user && x.password == password)
+                .SingleOrDefault();
         }
 
-        public void Set(string user, string password)
+        public bool Set(Login login)
         {
-            dbSet.Add(new Login { password = password, user = user });
+            dbSet.Add(login);
             context.SaveChanges();
+            return true;
         }
     }
 }

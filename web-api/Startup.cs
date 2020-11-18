@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.Context;
+using Infrastructure.Interfaces;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +32,10 @@ namespace web_api
             services.AddControllers();
             var connection = Configuration.GetConnectionString("Default");
             services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection));
+
+            services.AddTransient<ILoginRepository, LoginRepository>();
+            services.AddTransient<IProprietarioRepository, ProprietarioRepository>();
+            services.AddTransient<IImovelRepository, ImovelRepository>();
 
             services.AddSwaggerGen(x =>
             {

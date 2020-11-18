@@ -18,6 +18,9 @@ namespace Infrastructure.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Login>(new LoginMap().Configure);
+            modelBuilder.Entity<Proprietario>(new ProprietarioMap().Configure);
+            modelBuilder.Entity<Imovel>(new ImovelMap().Configure);
+            modelBuilder.Entity<Endereco>(new EnderecoMap().Configure);
         }
     }
 }

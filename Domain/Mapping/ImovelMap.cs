@@ -7,11 +7,12 @@ using System.Text;
 
 namespace Domain.Mapping
 {
-    public class ProprietarioMap : IEntityTypeConfiguration<Proprietario>
+    public class ImovelMap : IEntityTypeConfiguration<Imovel>
     {
-        public void Configure(EntityTypeBuilder<Proprietario> builder)
+        public void Configure(EntityTypeBuilder<Imovel> builder)
         {
-            builder.HasKey(k => k.id);
+            builder.HasKey(x => x.id);
+            builder.HasOne(p => p.proprietario);
             builder.HasOne(e => e.endereco);
         }
     }

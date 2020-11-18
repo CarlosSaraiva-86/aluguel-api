@@ -8,6 +8,6 @@ namespace Infrastructure.Interfaces
     public interface ILoginRepository
     {
         Login Get(string user, string password);
-        void Set(string user, string password);
+        bool Set(Login login);
     }
 }

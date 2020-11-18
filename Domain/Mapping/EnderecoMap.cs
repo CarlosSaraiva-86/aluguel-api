@@ -7,12 +7,11 @@ using System.Text;
 
 namespace Domain.Mapping
 {
-    public class ProprietarioMap : IEntityTypeConfiguration<Proprietario>
+    public class EnderecoMap : IEntityTypeConfiguration<Endereco>
     {
-        public void Configure(EntityTypeBuilder<Proprietario> builder)
+        public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.HasKey(k => k.id);
-            builder.HasOne(e => e.endereco);
         }
     }
 }

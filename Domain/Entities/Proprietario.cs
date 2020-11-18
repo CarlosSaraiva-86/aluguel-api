@@ -8,5 +8,6 @@ namespace Domain.Entities
     {
         public string nome { get; set; }
         public string telefone { get; set; }
+        public Endereco endereco { get; set; }
     }
 }
