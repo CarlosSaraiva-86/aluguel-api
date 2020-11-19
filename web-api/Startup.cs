@@ -65,7 +65,7 @@ namespace web_api
             {
                 endpoints.MapControllers();
             });
-            serviceProvider.GetService<ApplicationContext>().Database.Migrate();
+            //serviceProvider.GetService<ApplicationContext>().Database.Migrate();
         }
     }
 }
