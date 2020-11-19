@@ -21,8 +21,8 @@ namespace web_api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                    .UseUrls("http://localhost:5003");
+                    webBuilder.UseStartup<Startup>();
+                    //.UseUrls("http://localhost:5003");
                 });
     }
 }
