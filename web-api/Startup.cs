@@ -31,6 +31,10 @@ namespace web_api
         {
             services.AddControllers();
             var connection = Configuration.GetConnectionString("Default");
+            Console.WriteLine(connection);
+            var teste = Configuration.GetSection("TESTE_VAR");            
+            Console.WriteLine(teste);
+            
             services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseMySql(connection, mySqlOptionsAction: x =>
