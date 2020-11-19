@@ -32,9 +32,7 @@ namespace web_api
             services.AddControllers();
             var connection = Configuration.GetConnectionString("Default");
             Console.WriteLine(connection);
-            var teste = Configuration.GetSection("TESTE_VAR");            
-            Console.WriteLine(teste);
-            
+
             services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseMySql(connection, mySqlOptionsAction: x =>
@@ -75,7 +73,7 @@ namespace web_api
             {
                 endpoints.MapControllers();
             });
-            //serviceProvider.GetService<ApplicationContext>().Database.Migrate();
+            serviceProvider.GetService<ApplicationContext>().Database.Migrate();
         }
     }
 }
