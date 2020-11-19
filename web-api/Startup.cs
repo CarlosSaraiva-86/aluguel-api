@@ -31,7 +31,13 @@ namespace web_api
         {
             services.AddControllers();
             var connection = Configuration.GetConnectionString("Default");
-            services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection));
+            services.AddDbContext<ApplicationContext>(options =>
+            {
+                options.UseMySql(connection, mySqlOptionsAction: x =>
+                {
+                    x.EnableRetryOnFailure();
+                });
+            });
 
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<IProprietarioRepository, ProprietarioRepository>();
